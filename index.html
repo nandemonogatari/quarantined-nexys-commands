@@ -1,265 +1,893 @@
 <!DOCTYPE html>
-<html style="background-color: #eaeaea; overflow-y: auto;">
+<html style="background-color: #F5F5F5;">
 	
-<!-- Mirrored from discordyui.net/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Apr 2021 20:58:14 GMT -->
+<!-- Mirrored from discordNexyschan.net/commands by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Apr 2021 20:58:08 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-  		<meta charset="UTF-8">
-  		<meta name="description" content="Yui | A simple and modern Discord bot that provides fun and searching features to any Discord server, it also comes with a large selection of moderation tools. Yui is built on Node.js and uses the Discord.js framework.">
-  		<meta name="keywords" content="Discord, Discord bots, Discord bot, Yui, Yui Discord">
-  		<meta name="author" content="Yui">
-		<title>Yui - Discord</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Nexyschan | A simple and modern Discord bot that provides fun and searching features to any Discord server, it also comes with a large selection of moderation tools. Nexyschan is built on Node.js and uses the Discord.js framework.">
+		<meta name="keywords" content="Discord, Discord bots, Discord bot, Nexyschan, Nexyschan Discord">
+		<meta name="author" content="Nexyschan">
+		<title>Nexyschan - Discord</title>
 		<link rel="icon" href="cdn/avatar.png">
+		<style>
+			@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+			body {
+				font-family: monospace;
+			}
+
+			.main {
+				margin: 1em 6em 1em 6em;
+			}
+
+			@media screen and (max-width: 1450px) {
+				.main {
+					margin: 1em 1em 1em 1em;
+				}
+			}
+
+			table tr:first-child th:first-child {
+				width: 20%;
+			}
+
+			.tabcontent {
+				display: none;
+			}
+
+			.tag {
+				border-radius: 0px !important;
+				margin-left: 5px !important;
+			}
+
+			.card-content-command {
+				padding: 0.5rem !important;
+				font-size: 0.8em;
+			}
+
+			.card-command {
+				margin-bottom: 0.5em;
+			}
+
+			.card-header-title {
+				padding: 0.5rem !important;
+			}
+
+			.card-header-icon {
+				padding: 0.5rem !important;
+			}
+
+			.overflowtext {
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+
+			.pulse {
+				display: block;
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: #ff0000;
+				cursor: pointer;
+				box-shadow: 0 0 0 rgba(204, 44, 44, 0.4);
+				animation: pulse 2s infinite;
+			}
+
+			.pulse:hover {
+				animation: none;
+			}
+
+			@media screen and (max-width: 770px) {
+				.tag-mobile {
+					display: none !important;
+				}
+			}
+
+			@-webkit-keyframes pulse {
+				0% {
+					-webkit-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0.4);
+				}
+				70% {
+					-webkit-box-shadow: 0 0 0 10px rgba(204, 44, 44, 0);
+				}
+				100% {
+					-webkit-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0);
+				}
+			}
+			
+			@keyframes pulse {
+				0% {
+					-moz-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0.4);
+					box-shadow: 0 0 0 0 rgba(204, 44, 44, 0.4);
+				}
+				70% {
+					-moz-box-shadow: 0 0 0 10px rgba(204, 44, 44, 0);
+					box-shadow: 0 0 0 10px rgba(204, 44, 44, 0);
+				}
+				100% {
+					-moz-box-shadow: 0 0 0 0 rgba(204, 44, 44, 0);
+					box-shadow: 0 0 0 0 rgba(204, 44, 44, 0);
+				}
+			}
+		</style>
 		<link rel="stylesheet" href="cdn/css/bulma.css">
 		<link rel="stylesheet" href="cdn/css/font-awesome.min.css">
 		<link rel="stylesheet" href="cdn/css/main.css">
-        <meta property="og:url" content="index.html">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="A simple and modern Discord bot.">
-        <meta property="og:description" content="Yui provides fun and searching features to any Discord server, it also comes with a large selection of moderation tools. Yui is built on Node.js and uses the Discord.js framework.">
-        <meta property="og:image" content="cdn/images/ModernYui.png">
-        <meta property="og:image:secure_url" content="cdn/images/ModernYui.png">
+		<meta property="og:url" content="https://discordNexyschan.net/">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="A simple and modern Discord bot.">
+		<meta property="og:description" content="Nexyschan provides fun and searching features to any Discord server, it also comes with a large selection of moderation tools. Nexyschan is built on Node.js and uses the Discord.js framework.">
+		<meta property="og:image" content="https://discordNexyschan.net/cdn/images/ModernNexyschan.png">
+		<meta property="og:image:secure_url" content="https://discordNexyschan.net/cdn/images/ModernNexyschan.png">
 		<meta name="viewport" content="width=device-width, initial-scale=0.8">
-		<style>
-			.status td {
-				text-align: center !important;
-				padding: 2px;
-			}
-			.status thead {
-				border-bottom: 1px solid #ddd;
-			}
-			.status th:first-child, .status td:first-child { 
-    			font-weight: bolder;
-			}
-			.premium td {
-				text-align: center !important;
-				padding: 15px;
-			}
-			.premium th, .premium td {
-				border-bottom: 1px solid #ddd;
-			}
-			.premium th:first-child, .premium td:first-child { 
-    			font-weight: bolder;
-			}
-			#particle-js {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-position: 50% 50%;
-				opacity: 0.48;
-			}
-			canvas {
-				position: fixed;
-			}
-			@media screen and (max-width: 770px) {
-				.hero-body {
-					padding: 0px !important;
-					padding-top: 3em !important;
-				}
-			}
-			.circle:before {
-				content: ' \25CF';
-				font-size: 16px;
-			}
-		</style>
 	</head>
 	<body>
-		<section class="hero is-info is-fullheight" style="background-image: url('cdn/images/background_dark.jpg'); background-size: cover; background-color: #ffbdba;">
-			<!-- Hero header: will stick at the top -->
-			<div class="hero-head">
-				<header class="nav">
-					<div class="container">
-						<a class="nav-item" href='index.html'>
-							<img src="cdn/images/discord-logo.svg" class="hideme" style="width: 6em;">
-						</a>
-						<div class="nav-right">
-							<a href="index.html" class="nav-item is-active">
-								Home
-							</a>
-							<a href="commands.html" class="nav-item ">
-								Commands
-							</a>
-							<a href="https://docs.discordyui.net/" class="nav-item">
-								Documentation
-							</a>
-							<a href="permissions.html" class="nav-item ">
-								Permissions
-							</a>
-							<a href="status.html" class="nav-item ">
-								Status
-							</a>
-							<a href="https://discord.gg/ZvV4vCwP" class="nav-item">
-								Community
-							</a>
-							<a href="https://discordapp.com/oauth2/authorize?client_id=280497242714931202&amp;response_type=code&amp;scope=bot&amp;redirect_uri=https%3A%2F%2Fdiscordyui.net%2Fadded&amp;permissions=271641726" class="nav-item " style="color: #ffffff;">
-								<span>Invite Yui To Your Server</span>
-							</a>						</div>
-					</div>
-				</header>
-			</div>
-	
-			<!-- Hero content: will be in the middle -->
-			<div id="particles-js"></div>
-			<div class="hero-body">
-				<div class="container has-text-centered">
-					<h1 class="title">
-	<img src="cdn/images/logo.png">
-</h1>
-<h2 class="subtitle" style="margin-top: 1em;">
-	A simple and modern <img src="cdn/images/discord-logo.svg" style="width: 5em; vertical-align: middle; margin-bottom: 0.2em;"> bot.
-	<div class="info">
-		<nav class="level" style="margin-top: 2em;">
-			<div class="level-item has-text-centered">
-				<div>
-					<p class="heading">Guilds</p>
-					<p class="title">578,619</p>
+		<div class="hero-head hero is-info" style="background-color: #e19fa9;">
+			<header class="main">
+				<div class="container">
+					<a class="nav-left" href="commands.html">
+						<img src="cdn/images/nexyschan.png" class="hideme" style="width: 10em;">
+						<p class="menu-label">Quarantined Nexyschan v2.kys</p>
+					</a>
 				</div>
-			</div>
-			<div class="level-item has-text-centered">
-				<div>
-					<p class="heading">Channels</p>
-					<p class="title">19,966,415</p>
+			</header>
+		</div>
+		<div class="main">
+			<div class="columns">
+        <div class="column is-one-quarter" style="opacity: 0.8;">
+            <div class="card" style="padding: 1em 1em 1em 1em; width: 100%; position: sticky; top: 10px;">
+				<aside class="menu">
+					<p class="menu-label">
+						Commands
+					</p>
+					<ul class="menu-list">
+							<li><a class="tablinks is-active" onclick="show(event, 'Egirls');">Egirls</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Corona');">Corona</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Util');">Util</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Memes');">Memes</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Music');">Music</a></li>
+							<li><a class="tablinks " onclick="show(event, 'Moderation');">Moderation</a></li>
+					</ul>
+				</aside>
+            </div>
+        </div>
+        <div class="column is-one-half" style="opacity: 0.8;">
+				<div id="Moderation" class="tabcontent" style='display: block; '>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!clear {x}</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+									<!--<span class="tag is-success is-pulled-right">BAN_MEMBERS</span>
+									<span class="tag is-info is-pulled-right">SERVER ONLY</span>-->
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Deletes x messages.
+								</div>
+							</div>
+						 </div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!togglegif</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Toggle gif spam meme
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							 <header class="card-header">
+								 <p class="card-header-title">
+									 <code>!toggleauro</code>
+								 </p>
+								 <div class="card-header-icon">
+									 <span class="tag is-success is-pulled-right">MODERATOR</span>
+								 </div>
+							 </header>
+							 <div class="card-content card-content-command">
+								 <div class="content">
+									 Toggle auro meme
+								 </div>
+							 </div>
+						  </div>
+						  <div class="card card-command">
+							  <header class="card-header">
+								  <p class="card-header-title">
+									  <code>!togglepoki</code>
+								  </p>
+								  <div class="card-header-icon">
+									  <span class="tag is-success is-pulled-right">MODERATOR</span>
+								  </div>
+							  </header>
+							  <div class="card-content card-content-command">
+								  <div class="content">
+									  Toggle poki tenor gifs
+								  </div>
+							  </div>
+						   </div>
+						   <div class="card card-command">
+							   <header class="card-header">
+								   <p class="card-header-title">
+									   <code>!togglebgif</code>
+								   </p>
+								   <div class="card-header-icon">
+									   <span class="tag is-success is-pulled-right">MODERATOR</span>
+								   </div>
+							   </header>
+							   <div class="card-content card-content-command">
+								   <div class="content">
+									   Toggle bullet gif
+								   </div>
+							   </div>
+							</div>
 				</div>
-			</div>
-			<div class="level-item has-text-centered">
-				<div>
-					<p class="heading">Users</p>
-					<p class="title">39,189,208</p>
+				<div id="Egirls" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!thighs</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">THIGHS</span>
+									<span class="tag is-info is-pulled-right">EGIRLS</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Sends random thigh picture.
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							 <header class="card-header">
+								 <p class="card-header-title">
+									 <code>!mmmet</code>
+								 </p>
+								 <div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MMMET</span>
+									<span class="tag is-info is-pulled-right">EGIRLS</span>
+								 </div>
+							 </header>
+							 <div class="card-content card-content-command">
+								 <div class="content">
+									 Sends random mmmet picture.
+								 </div>
+							 </div>
+						  </div>
+						  <div class="card card-command">
+							  <header class="card-header">
+								  <p class="card-header-title">
+									  <code>!latestm</code>
+								  </p>
+								  <div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MMMET</span>
+									<span class="tag is-info is-pulled-right">EGIRLS</span>
+								  </div>
+							  </header>
+							  <div class="card-content card-content-command">
+								  <div class="content">
+									  Sends latest mmmet picture.
+								  </div>
+							  </div>
+						   </div>
+						   <div class="card card-command">
+							   <header class="card-header">
+								   <p class="card-header-title">
+									   <code>!epal</code>
+								   </p>
+								   <div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">EPAL</span>
+									<span class="tag is-info is-pulled-right">EGIRLS</span>
+								   </div>
+							   </header>
+							   <div class="card-content card-content-command">
+								   <div class="content">
+									   Sends random league epal.gg
+								   </div>
+							   </div>
+							</div>
+							<div class="card card-command">
+								<header class="card-header">
+									<p class="card-header-title">
+										<code>!egirl</code>
+									</p>
+									<div class="card-header-icon">
+										<span class="tag is-info is-pulled-right">EGIRLS</span>
+									</div>
+								</header>
+								<div class="card-content card-content-command">
+									<div class="content">
+										Sends random egirl picture.
+									</div>
+								</div>
+							 </div>
 				</div>
-			</div>
-			<div class="level-item has-text-centered">
-				<div>
-					<p class="heading">Uptime</p>
-					<p class="title">99.99%</p>
+				<div id="Corona" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!corona world</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">STATS</span>
+									<span class="tag is-info is-pulled-right">CORONA</span>
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Global Corona stats.
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							 <header class="card-header">
+								 <p class="card-header-title">
+									 <code>!corona {country}</code>
+								 </p>
+								 <div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">STATS</span>
+									<span class="tag is-info is-pulled-right">CORONA</span>
+								 </div>
+							 </header>
+							 <div class="card-content card-content-command">
+								 <div class="content">
+									 Corona stats for {country}.
+								 </div>
+							 </div>
+						  </div>
+						  <div class="card card-command">
+							  <header class="card-header">
+								  <p class="card-header-title">
+									  <code>!corona graph {country}</code>
+								  </p>
+								  <div class="card-header-icon">
+									 <span class="tag is-success is-pulled-right">GRAPH</span>
+									 <span class="tag is-info is-pulled-right">CORONA</span>
+								  </div>
+							  </header>
+							  <div class="card-content card-content-command">
+								  <div class="content">
+									  Corona graph with new daily infections for {country}.
+								  </div>
+							  </div>
+						   </div>
+						   <div class="card card-command">
+							   <header class="card-header">
+								   <p class="card-header-title">
+									   <code>!corona lead</code>
+								   </p>
+								   <div class="card-header-icon">
+									  <span class="tag is-success is-pulled-right">LEADERBOARD</span>
+									  <span class="tag is-info is-pulled-right">CORONA</span>
+								   </div>
+							   </header>
+							   <div class="card-content card-content-command">
+								   <div class="content">
+									   Global Corona leaderboard.
+								   </div>
+							   </div>
+							</div>
 				</div>
-			</div>
-		</nav>
+				<div id="Util" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!pfp {@user}</code>
+								</p>
+								<div class="card-header-icon">
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Grabs the profile picture of the user you mention.
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							 <header class="card-header">
+								 <p class="card-header-title">
+									 <code>!opgg {summname}</code>
+								 </p>
+								 <div class="card-header-icon">
+								 </div>
+							 </header>
+							 <div class="card-content card-content-command">
+								 <div class="content">
+									 Sends the opgg info for {summname}.
+								 </div>
+							 </div>
+						  </div>
+						  <div class="card card-command">
+							  <header class="card-header">
+								  <p class="card-header-title">
+									  <code>!translate {lang} {text}</code>
+								  </p>
+								  <div class="card-header-icon">
+								  </div>
+							  </header>
+							  <div class="card-content card-content-command">
+								  <div class="content">
+									  Translates {text} into {lang}.
+								  </div>
+							  </div>
+						   </div>
+						   <div class="card card-command">
+							   <header class="card-header">
+								   <p class="card-header-title">
+									   <code>!nitro</code>
+								   </p>
+								   <div class="card-header-icon">
+								   </div>
+							   </header>
+							   <div class="card-content card-content-command">
+								   <div class="content">
+									   Sends info about users with nitro in the server.
+								   </div>
+							   </div>
+							</div>
+							<div class="card card-command">
+								<header class="card-header">
+									<p class="card-header-title">
+										<code>!remindme {text} in {x}h{y}m</code>
+									</p>
+									<div class="card-header-icon">
+									</div>
+								</header>
+								<div class="card-content card-content-command">
+									<div class="content">
+										Reminds you in {x}hours and {y}minutes about {text} in the same channel.
+									</div>
+								</div>
+							 </div>
+							 <div class="card card-command">
+								 <header class="card-header">
+									 <p class="card-header-title">
+										 <code>!compress {attached_image}</code>
+									 </p>
+									 <div class="card-header-icon">
+									 </div>
+								 </header>
+								 <div class="card-content card-content-command">
+									 <div class="content">
+										 Tries to compress the attached image.
+									 </div>
+								 </div>
+							  </div>
+							  <div class="card card-command">
+								  <header class="card-header">
+									  <p class="card-header-title">
+										  <code>!convert {filetype} {attached_imgage}</code>
+									  </p>
+									  <div class="card-header-icon">
+									  </div>
+								  </header>
+								  <div class="card-content card-content-command">
+									  <div class="content">
+										  Tries to convert the attached image into {filetype}.
+									  </div>
+								  </div>
+							   </div>
+							   <div class="card card-command">
+								   <header class="card-header">
+									   <p class="card-header-title">
+										   <code>!stats</code>
+									   </p>
+									   <div class="card-header-icon">
+									   </div>
+								   </header>
+								   <div class="card-content card-content-command">
+									   <div class="content">
+										   Sends out stats about the least and most used emotes in the server.
+									   </div>
+								   </div>
+								</div>
+								<div class="card card-command">
+									<header class="card-header">
+										<p class="card-header-title">
+											<code>!owner</code>
+										</p>
+										<div class="card-header-icon">
+										</div>
+									</header>
+									<div class="card-content card-content-command">
+										<div class="content">
+											Pings the owner of the server.
+										</div>
+									</div>
+								 </div>
+								 <div class="card card-command">
+									 <header class="card-header">
+										 <p class="card-header-title">
+											 <code>!currweather {location}</code>
+										 </p>
+										 <div class="card-header-icon">
+										 </div>
+									 </header>
+									 <div class="card-content card-content-command">
+										 <div class="content">
+											 Sends the current weather stats for {location}.
+										 </div>
+									 </div>
+								  </div>
+								  <div class="card card-command">
+									  <header class="card-header">
+										  <p class="card-header-title">
+											  <code>!forecast {location}</code>
+										  </p>
+										  <div class="card-header-icon">
+										  </div>
+									  </header>
+									  <div class="card-content card-content-command">
+										  <div class="content">
+											  Sends shitty info about future weather conditions in {location}
+										  </div>
+									  </div>
+								   </div>
+				</div>
+				<div id="Memes" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>!owo {text}</code>
+								</p>
+								<div class="card-header-icon">
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									owoifies {text}.
+								</div>
+							</div>
+						 </div>
+						 <div class="card card-command">
+							 <header class="card-header">
+								 <p class="card-header-title">
+									 <code>!smileyface</code>
+								 </p>
+								 <div class="card-header-icon">
+								 </div>
+							 </header>
+							 <div class="card-content card-content-command">
+								 <div class="content">
+									 :=)
+								 </div>
+							 </div>
+						  </div>
+						  <div class="card card-command">
+							  <header class="card-header">
+								  <p class="card-header-title">
+									  <code>!help {@user}</code>
+								  </p>
+								  <div class="card-header-icon">
+								  </div>
+							  </header>
+							  <div class="card-content card-content-command">
+								  <div class="content">
+									  Helps the mentioned user :).
+								  </div>
+							  </div>
+						   </div>
+						   <div class="card card-command">
+							   <header class="card-header">
+								   <p class="card-header-title">
+									   <code>!helpo {@user}</code>
+								   </p>
+								   <div class="card-header-icon">
+								   </div>
+							   </header>
+							   <div class="card-content card-content-command">
+								   <div class="content">
+									   Helps the mentioned user even better :).
+								   </div>
+							   </div>
+							</div>
+							<div class="card card-command">
+								<header class="card-header">
+									<p class="card-header-title">
+										<code>!girls</code>
+									</p>
+									<div class="card-header-icon">
+									</div>
+								</header>
+								<div class="card-content card-content-command">
+									<div class="content">
+										Sends xpecial girls copypasta.
+									</div>
+								</div>
+							 </div>
+							 <div class="card card-command">
+								 <header class="card-header">
+									 <p class="card-header-title">
+										 <code>!girlso</code>
+									 </p>
+									 <div class="card-header-icon">
+									 </div>
+								 </header>
+								 <div class="card-content card-content-command">
+									 <div class="content">
+										 Sends xpecial girls copypasta but better.
+									 </div>
+								 </div>
+							  </div>
+							  <div class="card card-command">
+								  <header class="card-header">
+									  <p class="card-header-title">
+										  <code>!game</code>
+									  </p>
+									  <div class="card-header-icon">
+									  </div>
+								  </header>
+								  <div class="card-content card-content-command">
+									  <div class="content">
+										  Wanna play a game? :=).
+									  </div>
+								  </div>
+							   </div>
+				</div>
+				<div id="Music" class="tabcontent" style='display: block; display:none;'>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;join</code>
+								</p>
+								<div class="card-header-icon">
+						    	</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Joins a voice channel.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							 <header class="card-header">
+								 <p class="card-header-title">
+									 <code>;;leave</code>
+								 </p>
+								 <div class="card-header-icon">
+								 </div>
+							 </header>
+							 <div class="card-content card-content-command">
+								 <div class="content">
+									Clears the queue and leaves the voice channel.
+								 </div>
+							 </div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;log</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Saves last 10 messages to check for bugs.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;loop</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Loops the currently playing song.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;now</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Displays the currently playing song.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;pause</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Pauses the currently playing song.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;play</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Plays a song.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;queue</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Shows the player's queue.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;remove</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Removes a song from the queue at a given index.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;resume</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Resumes a currently paused song.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;shuffle</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Shuffles the queue.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;skip</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Vote to skip a song. The requester can automatically skip.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;stop</code>
+								</p>
+								<div class="card-header-icon">
+									<span class="tag is-success is-pulled-right">MODERATOR</span>
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Stop the player and clear the playlist.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;summon</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Summons the bot to a voice channel.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;volume</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Sets the volume of the player.
+								</div>
+							</div>
+						</div>
+						<div class="card card-command">
+							<header class="card-header">
+								<p class="card-header-title">
+									<code>;;help</code>
+								</p>
+								<div class="card-header-icon">
+								</div>
+							</header>
+							<div class="card-content card-content-command">
+								<div class="content">
+									Sends info about all music commands.
+								</div>
+							</div>
+						</div>
+				</div>
+        </div>
 	</div>
-</h2>
-<div style="margin-top:3em;">
-	<a href="https://discordapp.com/oauth2/authorize?client_id=280497242714931202&amp;response_type=code&amp;scope=bot&amp;redirect_uri=https%3A%2F%2Fdiscordyui.net%2Fadded&amp;permissions=271641726" class=" button is-info is-inverted " style="background-color: #ffbebb00; color: #ffffff; border-color: white;">
-		<span>Invite Yui To Your Server</span>
-	</a>
-</div>
-				</div>
-			</div>
-		</section>
-	</body>
-	<script src="cdn/js/particles.min.js"></script>
-	<script>
-		particlesJS('particles-js', {
-			"particles": {
-				"number": {
-				"value": 50,
-				"density": {
-					"enable": true,
-					"value_area": 800
-				}
-				},
-				"color": {
-				"value": "#ffffff"
-				},
-				"shape": {
-				"type": "circle",
-				"stroke": {
-					"width": 0,
-					"color": "#000000"
-				},
-				"polygon": {
-					"nb_sides": 5
-				},
-				"image": {
-					"src": "img/github.svg",
-					"width": 100,
-					"height": 100
-				}
-				},
-				"opacity": {
-				"value": 0.5,
-				"random": false,
-				"anim": {
-					"enable": false,
-					"speed": 1,
-					"opacity_min": 0.1,
-					"sync": false
-				}
-				},
-				"size": {
-				"value": 3,
-				"random": true,
-				"anim": {
-					"enable": false,
-					"speed": 40,
-					"size_min": 0.1,
-					"sync": false
-				}
-				},
-				"line_linked": {
-				"enable": true,
-				"distance": 150,
-				"color": "#ffffff",
-				"opacity": 0.4,
-				"width": 0.9469771699587272
-				},
-				"move": {
-				"enable": true,
-				"speed": 1.5782952832645452,
-				"direction": "none",
-				"random": false,
-				"straight": false,
-				"out_mode": "out",
-				"bounce": false,
-				"attract": {
-					"enable": false,
-					"rotateX": 600,
-					"rotateY": 1200
-				}
-				}
-			},
-			"interactivity": {
-				"detect_on": "canvas",
-				"events": {
-				"onhover": {
-					"enable": false,
-					"mode": "repulse"
-				},
-				"onclick": {
-					"enable": true,
-					"mode": "push"
-				},
-				"resize": true
-				},
-				"modes": {
-				"grab": {
-					"distance": 400,
-					"line_linked": {
-					"opacity": 1
-					}
-				},
-				"bubble": {
-					"distance": 400,
-					"size": 40,
-					"duration": 2,
-					"opacity": 8,
-					"speed": 3
-				},
-				"repulse": {
-					"distance": 200,
-					"duration": 0.4
-				},
-				"push": {
-					"particles_nb": 4
-				},
-				"remove": {
-					"particles_nb": 2
-				}
-				}
-			},
-			"retina_detect": true
-			});
-	</script>
+<script>
+	function show(evt, command) {
 
-<!-- Mirrored from discordyui.net/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Apr 2021 20:58:18 GMT -->
+		// Declare all variables
+	    var i, tabcontent, tablinks;
+
+	    // Get all elements with class="tabcontent" and hide them
+	    tabcontent = document.getElementsByClassName("tabcontent");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+	
+	    // Get all elements with class="tablinks" and remove the class "active"
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+	    }
+	
+	    // Show the current tab, and add an "active" class to the button that opened the tab
+		document.getElementById(command).style.display = "block";
+	    evt.currentTarget.className += " is-active";
+	}
+</script>
+		</div>
+	</body>
+
+<!-- Mirrored from discordNexyschan.net/commands by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Apr 2021 20:58:10 GMT -->
 </html>
